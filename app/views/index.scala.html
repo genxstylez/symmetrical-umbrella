@@ -1,0 +1,30 @@
+@(pages: scala.collection.immutable.List[Page], pageForm: play.api.data.Form[String], host:String)
+
+@import helper._
+
+@main("Page list") {
+    <div style="margin-bottom: 20px;">
+        <span style="font-size:25px; font-weight:500; margin-right: 40px;">@pages.size url(s)</span>
+        <a href="@routes.Application.newUrl"><button class="btn btn-primary">Create New</button></a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>shortened</td>
+                <td>original</td>
+                <td>visit count</td>
+            </tr>
+        </thead>
+        <tbody>
+        @pages.map { page =>
+
+            <tr href="@routes.Application.visits(page.id)">
+                <td>http://@host/@page.short_url</td>
+                <td>@page.url</td>
+                <td>@page.visit_count</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+}

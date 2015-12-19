@@ -1,0 +1,31 @@
+@(page:Page, visits:scala.collection.immutable.List[Visit], host:String)
+
+@import helper._
+
+@main("Visits") {
+
+    <div class="well">
+        <a href="/">Back</a>
+        <h5>Original URL: @page.url</h5>
+        <h5>Shortened URL: http://@host/@page.short_url</h5>
+        <h5>Total visitor count: @page.visit_count</h5>
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>IP Address</td>
+                    <td>Count</td>
+                </tr>
+            </thead>
+            <tbody>
+            @visits.map { visit =>
+                <tr>
+                    <td>@visit.ip</td>
+                    <td>@visit.count</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

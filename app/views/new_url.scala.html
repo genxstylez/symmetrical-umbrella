@@ -1,0 +1,16 @@
+@(pageForm: play.api.data.Form[String])
+
+@import helper._
+
+@main("Create New") {
+
+    <div class="well">
+        <a href="/">Back</a>
+        <h5>Create new url</h5>
+        @form(routes.Application.handlePostUrl) {
+            <div class="form-group">
+            @inputText(pageForm("url"), 'class -> "form-control", 'size -> 30)
+            <input type="submit" class="btn btn-default" value="Create" />
+        }
+    </div>
+}
